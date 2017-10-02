@@ -16,3 +16,6 @@ defmodule Math do
 end
 
 IO.puts Math.sum(2, 3)
+
+#To access the documentation iex> h Math # Access the docs for the module Math
+# iex> h Math.sum # Access the docs for the sum function

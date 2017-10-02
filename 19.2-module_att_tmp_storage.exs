@@ -1,7 +1,7 @@
 defmodule MyPlug do
   use Plug.Builder
 
-  plug :set_header
+  plug :set_header #plug/1 macro to connect functions that will be invoked when there is a web request.
   plug :send_ok
 
   def set_header(conn, _opts) do
