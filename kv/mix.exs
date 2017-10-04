@@ -1,3 +1,4 @@
+# The main responsibility of this file is to configure the project.
 defmodule KV.Mixfile do
   use Mix.Project
 
@@ -12,7 +13,7 @@ defmodule KV.Mixfile do
   end
 
   # Run "mix help compile.app" to learn about applications.
-  def application do
+  def application do # We use this public function to generate the app file
     [
       extra_applications: [:logger]
     ]
