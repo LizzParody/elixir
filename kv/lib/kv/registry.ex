@@ -76,4 +76,16 @@ defmodule KV.Registry do
   def handle_info(_msg, state) do
     {:noreply, state}
   end
+
+  def handle_cast({:create, name}, {names, refs}) do
+    if Map.has_key?(names, name) do
+      {:noreply, {names, refs}}
+    else
+      {:ok, pid} = KV.BucketSupervisor.start_bucket()
+      ref = Process.monitor(pid)
+      refs = Map.put(refs, ref, name)
+      names = Map.put(names, name, pid)
+      {:noreply, {names, refs}}
+    end
+  end
 end
