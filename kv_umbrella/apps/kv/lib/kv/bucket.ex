@@ -24,6 +24,7 @@ defmodule KV.Bucket do
 
   @doc """
   Deletes `key` from `bucket`.
+
   Returns the current value of `key`, if `key` exists.
   """
   def delete(bucket, key) do

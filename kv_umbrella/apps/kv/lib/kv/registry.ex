@@ -28,7 +28,7 @@ defmodule KV.Registry do
   end
 
   @doc """
-  Ensures there is a bucket associated with the given `name` in `server`.
+  Ensures there is a bucket associated to the given `name` in `server`.
   """
   def create(server, name) do
     GenServer.call(server, {:create, name})
@@ -46,6 +46,7 @@ defmodule KV.Registry do
   # 4. The previous handle_call callback for lookup was removed
 
   def handle_call({:create, name}, _from, {names, refs}) do
+    # 5. Read and write to the ETS table instead of the map
     case lookup(names, name) do
       {:ok, pid} ->
         {:reply, pid, {names, refs}}
